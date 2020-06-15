@@ -8,12 +8,12 @@
   "data": [
     {
       "name": "source_0",
-      "url": "data/movies.json",
-      "format": {"type": "json"},
+      "url": "data/movies.csv",
+      "format": {"type": "csv"},
       "transform": [
         {
           "type": "aggregate",
-          "groupby": ["Major_Genre"],
+          "groupby": ["Major Genre"],
           "ops": ["argmax"],
           "fields": ["US_Gross"],
           "as": ["argmax_US_Gross"]
@@ -48,11 +48,11 @@
           "fill": {"value": "#4c78a8"},
           "ariaRoleDescription": {"value": "bar"},
           "description": {
-            "signal": "\"argmax_US_Gross.Production_Budget\" + \": \" + (format(datum[\"argmax_US_Gross.Production_Budget\"], \"\")) + \"; \" + \"Major_Genre\" + \": \" + (isValid(datum[\"Major_Genre\"]) ? datum[\"Major_Genre\"] : \"\"+datum[\"Major_Genre\"])"
+            "signal": "\"argmax_US_Gross.Production_Budget\" + \": \" + (format(datum[\"argmax_US_Gross.Production_Budget\"], \"\")) + \"; \" + \"Major Genre\" + \": \" + (isValid(datum[\"Major Genre\"]) ? datum[\"Major Genre\"] : \"\"+datum[\"Major Genre\"])"
           },
           "x": {"scale": "x", "field": "argmax_US_Gross\\.Production_Budget"},
           "x2": {"scale": "x", "value": 0},
-          "y": {"scale": "y", "field": "Major_Genre"},
+          "y": {"scale": "y", "field": "Major Genre"},
           "height": {"scale": "y", "band": 1}
         }
       }
@@ -73,7 +73,7 @@
     {
       "name": "y",
       "type": "band",
-      "domain": {"data": "source_0", "field": "Major_Genre", "sort": true},
+      "domain": {"data": "source_0", "field": "Major Genre", "sort": true},
       "range": {"step": {"signal": "y_step"}},
       "paddingInner": 0.1,
       "paddingOuter": 0.05
@@ -108,7 +108,7 @@
       "scale": "y",
       "orient": "left",
       "grid": false,
-      "title": "Major_Genre",
+      "title": "Major Genre",
       "zindex": 0
     }
   ]

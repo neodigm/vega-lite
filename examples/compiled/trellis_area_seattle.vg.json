@@ -7,7 +7,7 @@
   "data": [
     {
       "name": "source_0",
-      "url": "data/seattle-temps.csv",
+      "url": "data/seattle-weather-hourly.csv",
       "format": {"type": "csv", "parse": {"date": "date"}},
       "transform": [
         {
@@ -150,13 +150,13 @@
               "orient": {"value": "vertical"},
               "fill": {"value": "#4c78a8"},
               "description": {
-                "signal": "\"Month\" + \": \" + (timeFormat(datum[\"date\"], '%b')) + \"; \" + \"temp\" + \": \" + (format(datum[\"temp\"], \"\"))"
+                "signal": "\"Month\" + \": \" + (timeFormat(datum[\"date\"], '%b')) + \"; \" + \"temp_max\" + \": \" + (format(datum[\"temp_max\"], \"\"))"
               },
               "x": {"scale": "x", "field": "date"},
-              "y": {"scale": "y", "field": "temp"},
+              "y": {"scale": "y", "field": "temp_max"},
               "y2": {"field": {"group": "height"}},
               "defined": {
-                "signal": "isValid(datum[\"date\"]) && isFinite(+datum[\"date\"]) && isValid(datum[\"temp\"]) && isFinite(+datum[\"temp\"])"
+                "signal": "isValid(datum[\"date\"]) && isFinite(+datum[\"date\"]) && isValid(datum[\"temp_max\"]) && isFinite(+datum[\"temp_max\"])"
               }
             }
           }
@@ -174,7 +174,7 @@
     {
       "name": "y",
       "type": "linear",
-      "domain": {"data": "source_0", "field": "temp"},
+      "domain": {"data": "source_0", "field": "temp_max"},
       "range": [{"signal": "child_height"}, 0],
       "zero": false,
       "nice": true

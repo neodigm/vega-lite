@@ -8,12 +8,12 @@
   "data": [
     {
       "name": "source_0",
-      "url": "data/movies.json",
-      "format": {"type": "json"},
+      "url": "data/movies.csv",
+      "format": {"type": "csv"},
       "transform": [
         {
           "type": "kde",
-          "field": "IMDB_Rating",
+          "field": "IMDB Rating",
           "bandwidth": 0.3,
           "as": ["value", "density"]
         }

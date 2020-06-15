@@ -8,14 +8,14 @@
   "data": [
     {
       "name": "source_0",
-      "url": "data/movies.json",
-      "format": {"type": "json"},
+      "url": "data/movies.csv",
+      "format": {"type": "csv"},
       "transform": [
         {
           "type": "kde",
-          "field": "IMDB_Rating",
+          "field": "IMDB Rating",
           "bandwidth": 0.3,
-          "groupby": ["Major_Genre"],
+          "groupby": ["Major Genre"],
           "extent": [0, 10],
           "counts": true,
           "steps": 50,
@@ -24,7 +24,7 @@
         {
           "type": "impute",
           "field": "density",
-          "groupby": ["Major_Genre"],
+          "groupby": ["Major Genre"],
           "key": "value",
           "method": "value",
           "value": 0
@@ -33,7 +33,7 @@
           "type": "stack",
           "groupby": ["value"],
           "field": "density",
-          "sort": {"field": ["Major_Genre"], "order": ["descending"]},
+          "sort": {"field": ["Major Genre"], "order": ["descending"]},
           "as": ["density_start", "density_end"],
           "offset": "zero"
         }
@@ -48,7 +48,7 @@
         "facet": {
           "name": "faceted_path_main",
           "data": "source_0",
-          "groupby": ["Major_Genre"]
+          "groupby": ["Major Genre"]
         }
       },
       "encode": {
@@ -67,9 +67,9 @@
           "encode": {
             "update": {
               "orient": {"value": "vertical"},
-              "fill": {"scale": "color", "field": "Major_Genre"},
+              "fill": {"scale": "color", "field": "Major Genre"},
               "description": {
-                "signal": "\"value\" + \": \" + (format(datum[\"value\"], \"\")) + \"; \" + \"density\" + \": \" + (format(datum[\"density\"], \"\")) + \"; \" + \"Major_Genre\" + \": \" + (isValid(datum[\"Major_Genre\"]) ? datum[\"Major_Genre\"] : \"\"+datum[\"Major_Genre\"])"
+                "signal": "\"value\" + \": \" + (format(datum[\"value\"], \"\")) + \"; \" + \"density\" + \": \" + (format(datum[\"density\"], \"\")) + \"; \" + \"Major Genre\" + \": \" + (isValid(datum[\"Major Genre\"]) ? datum[\"Major Genre\"] : \"\"+datum[\"Major Genre\"])"
               },
               "x": {"scale": "x", "field": "value"},
               "y": {"scale": "y", "field": "density_end"},
@@ -106,7 +106,7 @@
     {
       "name": "color",
       "type": "ordinal",
-      "domain": {"data": "source_0", "field": "Major_Genre", "sort": true},
+      "domain": {"data": "source_0", "field": "Major Genre", "sort": true},
       "range": {"scheme": "category20"}
     }
   ],
@@ -159,5 +159,5 @@
       "zindex": 0
     }
   ],
-  "legends": [{"fill": "color", "symbolType": "circle", "title": "Major_Genre"}]
+  "legends": [{"fill": "color", "symbolType": "circle", "title": "Major Genre"}]
 }

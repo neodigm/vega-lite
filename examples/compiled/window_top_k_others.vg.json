@@ -12,14 +12,14 @@
   "data": [
     {
       "name": "source_0",
-      "url": "data/movies.json",
-      "format": {"type": "json"},
+      "url": "data/movies.csv",
+      "format": {"type": "csv"},
       "transform": [
         {
           "type": "aggregate",
           "groupby": ["Director"],
           "ops": ["mean"],
-          "fields": ["Worldwide_Gross"],
+          "fields": ["Worldwide Gross"],
           "as": ["aggregate_gross"]
         },
         {
